@@ -1,8 +1,9 @@
 # CreateAudio
 Simplifys roblox Audio Creation into 1 simple easy to use module
 
-#HOW TO USE
-# Createsound.new()
+# HOW TO USE
+
+# Main Function Createsound.new()
 
 | **Parameter** | **Type**   | **Description**                                                                                                               |
 |---------------|------------|-------------------------------------------------------------------------------------------------------------------------------|

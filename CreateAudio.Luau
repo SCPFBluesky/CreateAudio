@@ -21,10 +21,6 @@ local MuteWarn = false
     NewSFX.Volume = Volume or 1
     NewSFX.Name = Name or "Sound"
     
-    task.defer(@native function()
-      game:GetService("Debris"):AddItem(NewSFX, NewSFX.Ended:Wait())
-    end);
-    
     return NewSFX
 end;
 

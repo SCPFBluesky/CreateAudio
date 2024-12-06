@@ -18,5 +18,5 @@ local CreateSound = require(game:GetService("ReplicatedStorage").CreateSound) --
 
 local newSFX = CreateSound.new("SoundTest", 7851351309, 1)  -- Make a new varible so we can control \ play the sound we created with the module
 newSFX:Play()
+```
 
-`

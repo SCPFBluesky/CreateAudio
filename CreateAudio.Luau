@@ -2,10 +2,11 @@
 --!native
 
 local self = {}
-local MuteWarn = true
+local MuteWarn = false
 
 @native function self.new(Name: string, ID: number, Volume: number?, Parent: any?)
     warn(ID)
+do
     if not ID then
         error("[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is Missing or Nil!")
     end;
@@ -16,6 +17,7 @@ local MuteWarn = true
 
     assert(type(ID) == "number", "[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is not a number!")
     assert(type(Volume) == "number", "[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is not a number!")
+end
 
     local NewSFX = Instance.new("Sound", Parent or game:GetService("SoundService"))
     NewSFX.SoundId = "rbxassetid://"..ID

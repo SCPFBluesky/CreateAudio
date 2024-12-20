@@ -1,30 +1,34 @@
---!nonstrict
+--!strict
 --!native
 
 local self = {}
 local MuteWarn = false
 
-@native function self.new(Name: string, ID: number, Volume: number?, Parent: any?)
-    warn(ID)
-do
-    if not ID then
-        error("[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is Missing or Nil!")
-    end;
+@native function self.new(ID: number, Name: string, Volume: number?, Parent: Instance?)
+    
+    do
+        assert(ID, "[CREATESOUND] Sound Creation Failed! SoundID is Missing or nil!")
 
-    if not Parent and MuteWarn == false then
-        warn("[GAME/DATA/CREATESOUND] Parent is missing or nil, Sound parent will fall back to sound service, to mute this go into the module and change MuteWarn to True")
-    end;
+        assert(type(ID) == "number", "[CREATESOUND] Sound Creation Failed, SoundID Is not a number got: " .. type(ID) ..  " ID that was provided: " .. ID)
 
-    assert(type(ID) == "number", "[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is not a number!")
-    assert(type(Volume) == "number", "[GAME/DATA/CREATESOUND] Sound Creation Failed! SoundID is not a number!")
-end
+        if Volume then
+            assert(type(Volume) == "number", "[CREATESOUND] Sound Creation Failed! Volume is not a number got: " .. type(Volume) .. " Volume that was provided: " .. Volume)
+        end;
 
-    local NewSFX = Instance.new("Sound", Parent or game:GetService("SoundService"))
-    NewSFX.SoundId = "rbxassetid://"..ID
+        if not Parent and not MuteWarn then
+            warn("[CREATESOUND] Parent is missing or nil, Sound parent will fall back to SoundService. To mute this warning, set MuteWarn to true in the module.")
+        end;
+        
+    end
+
+    local NewSFX = Instance.new("Sound")
+    NewSFX.SoundId = "rbxassetid://" .. ID
     NewSFX.Volume = Volume or 1
     NewSFX.Name = Name or "Sound"
+    NewSFX.Parent = Parent or game:GetService("SoundService")
 
-    return NewSFX
+    return NewSFX;
+    
 end;
 
-return self
+return self;

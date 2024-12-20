@@ -18,8 +18,7 @@ local MuteWarn = false
         if not Parent and not MuteWarn then
             warn("[CREATESOUND] Parent is missing or nil, Sound parent will fall back to SoundService. To mute this warning, set MuteWarn to true in the module.")
         end;
-        
-    end
+    end;
 
     local NewSFX = Instance.new("Sound")
     NewSFX.SoundId = "rbxassetid://" .. ID

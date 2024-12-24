@@ -1,9 +1,28 @@
+--[[
+	Name: CreateSound
+	Author(s) : DrBLoop
+	Date: 12/6/24
+	RunTimeContext: Shared
+	Information: A short simple module designed to help developers create sounds.
+]]
+
 --!strict
 --!native
+--!optimize 2
 
 local self = {}
 local MuteWarn = false
 
+
+--[[
+	--------------------------------------------------------------------------------------------------
+	 @Name : 	 	  new
+	 @Author :        @DrBIoop
+	 @Description :   Inits and returns the new audio
+	 @Params : 	      Number: ID, String: name Number? : Volume Instance? : Parent
+	 @Returns : 	  Instance
+	--------------------------------------------------------------------------------------------------
+--]]
 @native function self.new(ID: number, Name: string, Volume: number?, Parent: Instance?)
 
 	do

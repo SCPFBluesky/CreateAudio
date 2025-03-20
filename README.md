@@ -15,9 +15,13 @@ Simplifys roblox Audio Creation into 1 simple easy to use module
 
 # Example Useage
 ```lua
-local CreateSound = require(game:GetService("ReplicatedStorage").CreateSound) -- Require the Module so we can use it
+local CreateSound = require("./CreateSound");
 
-local newSFX = CreateSound.new("SoundTest", 7851351309, 1)  -- Make a new varible so we can control \ play the sound we created with the module
-newSFX:Play()
+local yes = CreateSound("Hello", 7851351309, 1, workspace);
+print(yes.Volume)
+print(yes.Parent)
+
+wait(1);
+yes:Play()
 ```
 

@@ -1,52 +1,20 @@
 --[[
 	Name: CreateSound
-	Author(s) : DrBLoop
-	Date: 12/6/24
+	Author(s) : WATDAHECKLOL32
+	Date: 3/20/25
 	RunTimeContext: Shared
 	Information: A short simple module designed to help developers create sounds.
 ]]
 
---!strict
---!native
---!optimize 2
+--!nonstrict
+return function(Name: string, ID: string | number, volume: number? | nil, Parent: Instance? | nil)
+	local SoundInstance: Sound = Instance.new("Sound");
+	SoundInstance.Name = Name;
 
-local self = {}
-local MuteWarn = false
+	SoundInstance.SoundId = "rbxassetid://" .. ID
+	SoundInstance.Volume = volume or 1;
 
-
---[[
-	--------------------------------------------------------------------------------------------------
-	 @Name : 	 	  new
-	 @Author :        @DrBIoop
-	 @Description :   Inits and returns the new audio
-	 @Params : 	      Number: ID, String: name Number? : Volume Instance? : Parent
-	 @Returns : 	  Instance
-	--------------------------------------------------------------------------------------------------
---]]
-@native function self.new(ID: number, Name: string, Volume: number?, Parent: Instance?)
-
-	do
-		assert(ID, "[CREATESOUND] Sound Creation Failed! SoundID is Missing or nil!")
-
-		assert(type(ID) == "number", "[CREATESOUND] Sound Creation Failed, SoundID Is not a number")
-
-		if Volume then
-			assert(type(Volume) == "number", "[CREATESOUND] Sound Creation Failed! Volume is not a number")
-		end;
-
-		if not Parent and not MuteWarn then
-			warn("[CREATESOUND] Parent is missing or nil, Sound parent will fall back to SoundService. To mute this warning, set MuteWarn to true in the module.")
-		end;
-	end;
-
-	local NewSFX = Instance.new("Sound")
-	NewSFX.SoundId = "rbxassetid://" .. ID
-	NewSFX.Volume = Volume or 1
-	NewSFX.Name = Name or "Sound"
-	NewSFX.Parent = Parent or game:GetService("SoundService")
-
-	return NewSFX;
-
+	SoundInstance.Parent = Parent;
+	return SoundInstance;
 end;
 
-return self;

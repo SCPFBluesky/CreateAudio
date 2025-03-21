@@ -7,10 +7,10 @@
 ]]
 
 --!nonstrict
-return function(Name: string, ID: string | number, volume: number? | nil, Parent: Instance? | nil)
+return function(Name: string, ID: string | number, volume: number? | nil, Parent: Instance? | nil) : (Sound)
 	assert(Name, "A name needs to be provided.");
 	assert(ID, "A ID needs to be provided.");
-	
+
 	local SoundInstance: Sound = Instance.new("Sound");
 	SoundInstance.Name = Name;
 
@@ -20,4 +20,3 @@ return function(Name: string, ID: string | number, volume: number? | nil, Parent
 	SoundInstance.Parent = Parent;
 	return SoundInstance;
 end;
-
